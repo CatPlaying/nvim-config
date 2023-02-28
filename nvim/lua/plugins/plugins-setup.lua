@@ -75,7 +75,8 @@ return require('packer').startup(function(use)
       'LinArcX/telescope-env.nvim',
     }
   }
-  use "nvim-telescope/telescope-live-grep-raw.nvim"
+  -- use "nvim-telescope/telescope-live-grep-raw.nvim"
+  use "nvim-telescope/telescope-live-grep-args.nvim"                                                                       
 
   use "MattesGroeger/vim-bookmarks"
   use "tom-anders/telescope-vim-bookmarks.nvim"
