@@ -63,7 +63,7 @@ return require('packer').startup(function(use)
   use "lewis6991/gitsigns.nvim" -- 左则git提示
 
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',  -- 文件检索
+    'nvim-telescope/telescope.nvim', tag = '0.1.4',  -- 文件检索
     requires = {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
@@ -84,7 +84,7 @@ return require('packer').startup(function(use)
   use { "mhinz/vim-startify" } -- start
 
   -- debug
-  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
   use "theHamsta/nvim-dap-virtual-text"
   -- vimspector 
 

@@ -1,43 +1,34 @@
-local telescope = require('telescope')
-local actions   = require('telescope.actions')
-local previewers = require('telescope.previewers')
-local lga_actions = require("telescope-live-grep-args.actions")                             
-
-telescope.setup{
+require('telescope').setup{
   defaults = {
-    color_devicons = true,
-    set_env = {COLORTERM = 'truecolor'},
-    vimgrep_arguments = {
-      'ag',
-      '--column',
-      '--numbers',
-      '--noheading',
-      '--nocolor',
-    },
-    file_previewer = previewers.vim_buffer_cat.new,
-    grep_previewer = previewers.vim_buffer_vimgrep.new,
-    qflist_previewer = previewers.vim_buffer_qflist.new,
+    -- Default configuration for telescope goes here:
+    -- config_key = value,
+    mappings = {
+      i = {
+        -- map actions.which_key to <C-h> (default: <C-/>)
+        -- actions.which_key shows the mappings for your picker,
+        -- e.g. git_{create, delete, ...}_branch for the git_branches picker
+        ["<C-K>"] = "which_key"
+      }
+    }
   },
   pickers = {
+    -- Default configuration for builtin pickers goes here:
+    -- picker_name = {
+    --   picker_config_key = value,
+    --   ...
+    -- }
+    -- Now the picker_config_key will be applied every time you call this
+    -- builtin picker
   },
   extensions = {
-    live_grep_args = {
-      auto_quoting = true, -- enable/disable auto-quoting
-      -- define mappings, e.g.
-      mappings = { -- extend mappings
-        i = {
-          ["<C-k>"] = lga_actions.quote_prompt(),
-          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-        },
-      },
-      -- ... also accepts theme settings, for example:
-      -- theme = "dropdown", -- use dropdown theme
-      -- theme = { }, -- use own theme spec
-      -- layout_config = { mirror=true }, -- mirror preview pane
-    }                                        
-  },
+    -- Your extension configuration goes here:
+    -- extension_name = {
+    --   extension_config_key = value,
+    -- }
+    -- please take a look at the readme of the extension you want to configure
+  }
 }
---
+
 -- telescope.load_extension('packer')
 -- telescope.load_extension('project')
 -- telescope.load_extension('env')

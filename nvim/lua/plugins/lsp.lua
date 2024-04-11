@@ -8,9 +8,24 @@ require("mason").setup({
     }
 })
 
-require("mason-lspconfig").setup {
-    ensure_installed = { "sumneko_lua", "rust_analyzer", "fortls", "marksman", "jedi_language_server"},
-}
+local lspconfig = require('lspconfig')
+
+require("mason-lspconfig").setup_handlers({
+   function (server_name)
+     require("lspconfig")[server_name].setup{}
+   end,
+   ["clangd"] = function ()
+     lspconfig.clangd.setup {
+      cmd = {
+        "clangd",
+        "--header-insertion=never",
+        "--query-driver=/usr/bin/clang",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+      } 
+    }
+    end
+})
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
